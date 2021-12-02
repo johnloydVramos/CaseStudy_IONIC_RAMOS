@@ -18,7 +18,14 @@ export class ApiService {
 
   addStudent(data){
     return this.http.post('http://localhost/Ionic_CRUD_APP/backend/create.php', data);
+  }
 
+  getStudents(){
+    return this.http.get('http://localhost/Ionic_CRUD_APP/backend/getstudents.php');
+  }
+
+  deleteStudent(id){
+    return this.http.delete('http://localhost/Ionic_CRUD_APP/backend/delete.php?id='+id);
   }
 }
 

@@ -12,9 +12,12 @@ export class HomePage {
   student_add: any;
   student_course: any;
   student_year: any;
+  students: any = [];
 
 
-  constructor(public _apiService: ApiService) {}
+  constructor(public _apiService: ApiService) {
+    //this.getStudents();
+  }
 
   addStudent(){
   let data = {
@@ -28,9 +31,33 @@ export class HomePage {
 
   this._apiService.addStudent(data).subscribe((res:any) =>{
     console.log("Success ==", res);
+    this.student_no = '';
+    this.student_name = '';
+    this.student_add = '';
+    this.student_course = '';
+    this.student_year = '';
+    alert("SUCCESS");
   },(error:any) =>{
+    alert('ERROR');
     console.log("Error==", error);
   })
   }
 
+  getStudents(){
+    this._apiService.getStudents().subscribe((res:any)=>{
+      console.log("SUCCESS ==", res);
+      this.students = res;
+    },(error:any)=>{
+      console.log("ERROR==", error);
+    })
+  }
+
+  deleteStudent(id){
+    this._apiService.deleteStudent(id).subscribe((res:any)=>{
+      console.log("SUCCESS");
+      this.getStudents();
+    }, (err:any)=>{
+      console.log("ERROR");
+    })
+  }
 }

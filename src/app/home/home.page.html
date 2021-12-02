@@ -38,5 +38,25 @@
       <ion-button type="button" (click)=addStudent() color="primary" shape="full" expand="block">Add Student</ion-button>
     </ion-col>
   </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-button type="button" (click)=getStudents() color="primary" shape="full" expand="block">View Student</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-list>
+
+<ion-list>
+  <ion-list-header>Student List</ion-list-header>
+  <ion-item lines="inset" *ngFor="let student of students">
+    <ion-label>
+      <h5> {{student.student_no}} - ({{student.student_name}}, {{student.student_add}}</h5>
+
+    </ion-label>
+    <div class="item-note">
+      <ion-icon name="create" style="zoom: 2.0;"></ion-icon>
+      <ion-icon name="trash" style="zoom: 2.0;" (click)="deleteStudent(student.id)"></ion-icon>
+    </div>
+  </ion-item>
 </ion-list>
 </ion-content>
