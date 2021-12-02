@@ -27,6 +27,14 @@ export class ApiService {
   deleteStudent(id){
     return this.http.delete('http://localhost/Ionic_CRUD_APP/backend/delete.php?id='+id);
   }
+
+  getStudent(id){
+    return this.http.get('http://localhost/Ionic_CRUD_APP/backend/getStudent.php?id='+id);
+  }
+
+  updateStudent(id,data){
+    return this.http.put('http://localhost/Ionic_CRUD_APP/backend/updateStudent.php?id='+id,data);
+  }
 }
 
 
